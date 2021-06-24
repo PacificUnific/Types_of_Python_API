@@ -1,0 +1,135 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Python's types",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api": {
+      "get": {
+        "summary": "Renders a main page.",
+        "responses": {
+          "200": {
+            "description": "This page will be rendered regardless from authorization."
+          }
+        }
+      }
+    },
+    "/api/reg": {
+      "get": {
+        "summary": "Renders a page for registration of user.",
+        "responses": {
+          "200": {
+            "description": "Displays fields, which need to fill for registration."
+          }
+        }
+      },
+      "post": {
+        "summary": "Registration.",
+        "responses": {
+          "200": {
+            "description": "If all fields are filled and valid, user will be registred. In other way, user will be redirected to this page for repeat filling."
+          },
+          "403": {
+            "description": "If user has already been authorized, he won't be registered. He will be redirected to page with <b>403</b> error."
+          }
+        }
+      }
+    },
+    "/api/login": {
+      "get": {
+        "summary": "Renders a log in page.",
+        "responses": {
+          "200": {
+            "description": "Displays fields, which need to fill for authorization."
+          }
+        }
+      },
+      "post": {
+        "summary": "Authorization.",
+        "responses": {
+          "200": {
+            "description": "If all fields are filled and valid, user will be registred. In other way, user will be redirected to this page for repeat filling."
+          },
+          "403": {
+            "description": "If user has already been authorized, he won't be authorized repeatly. He will be redirected to page with <b>403</b> error."
+          }
+        }
+      }
+    },
+    "/api/logout": {
+      "get": {
+        "summary": "Gives an ability to log out.",
+        "responses": {
+          "200": {
+            "description": "User will be log out and redirected to authorization page."
+          }
+        }
+      }
+    },
+    "/api/data": {
+      "get": {
+        "summary": "Returns all notes from table 'collected_data'.",
+        "description": "Returns a JSON object.",
+        "responses": {
+          "200": {
+            "description": "If user is authorized, response is a JSON object of all notes and their total number.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Data"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "If user isn't authorized, returns page with corresponding error."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Data": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Item"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "example": 1
+          }
+        }
+      },
+      "Item": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "string",
+            "example": "bool"
+          },
+          "mutability": {
+            "type": "string",
+            "example": "immutable"
+          },
+          "description": {
+            "type": "string",
+            "example": "Boolean value"
+          },
+          "syntax_examples": {
+            "type": "string",
+            "example": "True; False"
+          }
+        }
+      }
+    }
+  }
+}

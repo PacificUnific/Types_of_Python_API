@@ -1,0 +1,14 @@
+scraper:
+    url: 'https://en.wikipedia.org/wiki/Python_(programming_language)'
+    caption: "Summary of Python 3's built-in types"
+    key: 'dry_run'
+
+db:
+    ip: '127.0.0.1'
+    port: '5432'
+    username: 'postgres'
+    password: '1111'
+    db_name: 'database'
+
+api:
+    port: 1235

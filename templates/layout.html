@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            {{ title }}
+        </title>
+        <link rel="stylesheet" href="{{ static_url('styles/style.css') }}" type="text/css">
+    </head>
+    <body>
+        <header>
+            <div class="menu_bar">
+                <h2>Python types</h2>
+                <h1>{{ title }}</h1>
+                <div class="menu_links">
+                    {% if not login %}
+                        <a href="/api/login">Sign in</a>
+                        <a href="/api/reg">Sign up</a>
+                    {% else %}
+                        <h3>You signed in as <span>{{ login }}</span></h3>
+                        <a href="/api/logout">Log out</a>
+                    {% end if %}
+                </div>
+            </div>
+        </header>
+        <div class="content">
+            <div class="message">
+                {{ message }}
+            </div>
+            {% block content %}
+            {% end %}
+        </div>
+        <footer>
+            <div class="footer_bar">
+                {% if login %}
+                    <a href="/api/data">To content data</a>
+                {% end if %}
+            </div>
+        </footer>
+    </body>
+</html>

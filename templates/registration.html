@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <form method="post" action="/api/reg" class="form">
+        <div class="form_fields">
+            <div class="form_field">
+                <p class="form_label">Login:</p>
+                <input name='login' type="text" class="form_textbox" required>
+            </div>
+            <div class="form_field">
+                <p class="form_label">Password:</p>
+                <input name='pass' type="password" class="form_textbox" required>
+            </div>
+            <div class="form_field">
+                <p class="form_label">Repeat password:</p>
+                <input name='rep_pass' type="password" class="form_textbox" required>
+            </div>
+        </div>
+        {% module xsrf_form_html() %}
+        <input type="submit" class="form_submit" value="Sign up">
+    </form>
+{% end %}
