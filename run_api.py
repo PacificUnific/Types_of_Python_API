@@ -250,7 +250,7 @@ class GettingDataHandler(tornado.web.RequestHandler):
     """
     def prepare(self):
         """
-        Preprocesses and saves notes from 'collected_data' as json in request
+        Preprocesses and saves notes as json in request
         """
         # take all notes in 'collected_data' from 'lst' by headers in 'col_titles'
         s = open_connection()
@@ -270,7 +270,7 @@ class GettingDataHandler(tornado.web.RequestHandler):
     async def get(self):
         """
         Provides authorised user access to formed early data in request
-        Also we can see json string on generated page
+        Writing json string on generated page
         """
         # get username from cookie
         login = self.get_cookie('user')
