@@ -6,10 +6,12 @@ import datetime
 Base = declarative_base()
 
 
-# users
 class User(Base):
     """
-    User's model
+    Create a new object of user's model
+
+    :type user: list
+    :param user: username and password
     """
     __tablename__ = 'users'
 
@@ -19,7 +21,7 @@ class User(Base):
     created_at = Column(DateTime, nullable=False, default=datetime.datetime.utcnow)
     last_request = Column(DateTime)
 
-    def __str__(self) -> str:
+    def __str__(self):
         """
         Outputs login field of this object
 
@@ -28,21 +30,17 @@ class User(Base):
         """
         return f'{self.login}'
 
-    def __init__(self, user: list):
-        """
-        Create a new object
-                
-        :type user: list
-        :param user: username and password
-        """
+    def __init__(self, user):
         self.login = user[0]
         self.password = user[1]
 
 
-# collected_data
 class Data(Base):
     """
-    Model of Python's types
+    Creates a new object of model of Python's types
+
+    :type row: list
+    :param row: list of properties of note from 'collected_data'
     """
     __tablename__ = 'collected_data'
 
@@ -52,7 +50,7 @@ class Data(Base):
     description = Column(String)
     syntax_examples = Column(String)
 
-    def __str__(self) -> str:
+    def __str__(self):
         """
         Outputs type field of this object
 
@@ -61,13 +59,7 @@ class Data(Base):
         """
         return f'{self.type}'
 
-    def __init__(self, row: list):
-        """
-        Creates a new object
-
-        :type row: list
-        :param row: list of properties of note from 'collected_data'
-        """
+    def __init__(self, row):
         self.type = row[0]
         self.mutability = row[1]
         self.description = row[2]
