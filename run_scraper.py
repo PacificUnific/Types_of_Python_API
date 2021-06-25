@@ -35,12 +35,12 @@ PASS = db['password']
 DB_NAME = db['db_name']
 
 
-def run_params() -> object:
+def run_params():
     """
-    This function adds run parameter, which named by 'KEY'
+    Addition run parameter, which named by 'KEY'
 
     :rtype: <class 'argparse.Namespace'>
-    :return: namespace of run parameters, which includes just has created by us too
+    :return: namespace of run parameters
     """
     parser = argparse.ArgumentParser()
     parser.add_argument(f'--{KEY}', default=False,
@@ -51,9 +51,9 @@ def run_params() -> object:
     return parser.parse_args()
 
 
-def print_to_console(headers: list, rows: list):
+def print_to_console(headers, rows):
     """
-    This function reflects scrapped table to console
+    Reflects scrapped table to console
 
     :type headers: list
     :param headers: table headers
@@ -75,11 +75,9 @@ def print_to_console(headers: list, rows: list):
     print(table)
 
 
-def add_to_db(notes: list):
+def add_to_db(notes):
     """
-    In this function we add all rows from table,
-    which has been parsed, to 'collected_data'
-    table in database
+    Addition all rows from table
 
     :type notes: list
     :param notes: rows from table
@@ -119,7 +117,7 @@ def add_to_db(notes: list):
 
 def scrapping() -> tuple:
     """
-    This function scrap Wikipedia article about Python and collect data from Python's types table
+    Scraps Wikipedia article about Python and collect data from Python's types table
 
     :rtype: tuple
     :return: lists of headers and all rows from scrapped table
