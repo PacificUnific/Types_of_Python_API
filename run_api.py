@@ -39,7 +39,7 @@ engine = create_engine(f'postgresql+psycopg2://{USER}:{PASS}@{IP}:{PORT}/{DB_NAM
 
 
 # connect to DB
-def open_connection() -> object:
+def open_connection():
     """
     This function allows us to connect to database
 
@@ -52,7 +52,7 @@ def open_connection() -> object:
     return session
 
 
-def close_connection(session: object):
+def close_connection(session):
     """
     This function closes a connection to database
 
@@ -91,7 +91,6 @@ class Application(tornado.web.Application):
 class MainHandler(tornado.web.RequestHandler):
     """
     Reflects main page
-    On it user can go to all other pages
     """
     title = 'Main'
     address = 'layout.html'
