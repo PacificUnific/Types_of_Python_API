@@ -55,3 +55,16 @@ get response from it in format *'application/json'*.
 Apply to '**swagger.json**' to know about work of all API-methods 
 more detailed.
 
+## Start-up Instruction
+
+The steps, described below, need to execute, if you run application 
+for the first time. You need to run '**db_init.py**' to initialize 
+database. It creates a database and two tables, which have already 
+been written early. After it, necessary is a execution of 
+'**run_scraper.py**'. This script has run parameter ('*--dry_run*' 
+by default), which can accept **True** or **False**. In first case 
+program shows a table in console, else updates, in other words, 
+deletes old notes in database and adds new, has just been scrapped, 
+to it.
+
+In common way, you just launch '**run_api**' and use this API.    
