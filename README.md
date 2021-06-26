@@ -63,8 +63,9 @@ database. It creates a database and two tables, which have already
 been written early. After it, necessary is a execution of 
 '**run_scraper.py**'. This script has run parameter ('*--dry_run*' 
 by default), which can accept **True** or **False**. In first case 
-program shows a table in console, else updates, in other words, 
-deletes old notes in database and adds new, has just been scrapped, 
-to it.
+program shows a table in console, else updates notes in database, 
+in other words, deletes old in database and adds new, has just 
+been scrapped, to it. If 'collected_data' is empty, '--dry_run False'
+just creates notes in it. 
 
 In common way, you just launch '**run_api**' and use this API.    
