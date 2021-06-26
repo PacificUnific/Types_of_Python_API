@@ -21,7 +21,7 @@ from yaml import SafeLoader
 with open('config.yaml') as f:
     data = yaml.load(f, Loader=SafeLoader)
 # get from 'data' all params
-# for scrapping
+# for scraping
 scraper = data['scraper']
 URL = scraper['url']
 CAPTION = scraper['caption']
@@ -46,14 +46,14 @@ def run_params():
     parser.add_argument(f'--{KEY}', default=False,
                         type=lambda x: (str(x).capitalize() == 'True'),
                         help='gives a opportunity to choose, what we'
-                             'should do with a data scrapped from table')
+                             'should do with a data scraped from table')
 
     return parser.parse_args()
 
 
 def print_to_console(headers, rows):
     """
-    Reflects scrapped table to console
+    Reflects scraped table to console
 
     :type headers: list
     :param headers: table headers
@@ -115,12 +115,12 @@ def add_to_db(notes):
     print('Connection was closed')
 
 
-def scrapping() -> tuple:
+def scraping() -> tuple:
     """
     Scraps Wikipedia article about Python and collect data from Python's types table
 
     :rtype: tuple
-    :return: lists of headers and all rows from scrapped table
+    :return: lists of headers and all rows from scraped table
     """
 
     response = requests.get(URL, headers=Headers(os="mac", headers=True).generate())
@@ -179,8 +179,8 @@ def scrapping() -> tuple:
     return headers, rows
 
 
-# get info after scrapping
-headers, rows = scrapping()
+# get info after scraping
+headers, rows = scraping()
 # if parameter is in namespace,
 # we print table to console,
 # else add it to database
